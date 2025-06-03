@@ -4,7 +4,7 @@
 
 ![](https://badgen.net/badge/status/proof%20of%20concept/purple?icon=github)
 
-> ![NOTE]
+> ![WARNING]
 > 
 > Currently only tested on Linux.
 
