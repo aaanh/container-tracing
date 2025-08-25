@@ -1,6 +1,6 @@
 # Tracing that Container
 
-<img width="800" height="800" alt="あのCONTAINERをなぞって" src="https://github.com/user-attachments/assets/e7390ccc-0618-41f0-ad28-a1a91af6e6cf" />
+<img width="400" height="400" alt="あのCONTAINERをなぞって" src="https://github.com/user-attachments/assets/e7390ccc-0618-41f0-ad28-a1a91af6e6cf" />
 
 ![](https://badgen.net/badge/status/proof%20of%20concept/purple?icon=github)
 
