@@ -1,5 +1,7 @@
 default: trace
 
+# --- DOCKER ---
+
 build-base:
 	docker build . -f lttng-base.Dockerfile -t aaanh/lttng-base:latest --network=host --no-cache
 
@@ -26,6 +28,37 @@ clean-docker:
 	docker image prune -f
 
 all: build trace copy
+
+# --- PODMAN ---
+
+build-base-podman:
+	podman build . -f lttng-base.Dockerfile -t aaanh/lttng-base:latest
+
+build-podman:
+	podman build . -t ls-podman:latest
+
+trace-podman:
+	export LD_PRELOAD=liblttng-ust-libc-wrapper.so:liblttng-ust-cyg-profile.so:liblttng-ust-fork.so
+	sudo lttng create "podman-both-ls-$(shell date +%Y%m%d-%H%M%S)"
+	sudo lttng enable-event -u -a
+	sudo lttng enable-event -k -a
+	sudo lttng add-context -u -t vtid -t procname -t vpid -t ip
+	sudo lttng start
+	podman run --rm \
+		--ipc=host \
+		-v /dev/shm:/dev/shm:rw \
+		-v /var/run/lttng:/var/run/lttng:rw \
+		ls-podman:latest
+	sudo lttng stop
+	sudo lttng destroy
+
+clean-podman:
+	podman container prune -f
+	podman iamge prune -f
+
+all-podman: build-base-podman build-podman trace-podman copy
+
+# Commons
 
 copy:
 	mkdir -p lttng-traces

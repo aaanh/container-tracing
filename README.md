@@ -1,14 +1,16 @@
-# Tracing Docker container
-
-...or with any engine, hopefully.
+# Containers Trace
 
 ![](https://badgen.net/badge/status/proof%20of%20concept/purple?icon=github)
 
 > [!NOTE]
 > 
 > Currently only tested on Linux.
+>
+> Append `-podman` to `make` targets to use `podman` instead.
 
 ## Pre-requisites
+
+This PoC assumes you already have Docker and/or Podman installed.
 
 > [!NOTE]
 >
@@ -59,8 +61,16 @@ Then verify that there are traces output to this repository's root `./lttng-trac
 
 tl;dr
 
+a. Docker
+
 ```sh
 make all
+```
+
+b. Podman
+
+```sh
+make all-podman
 ```
 
 This will `build`, `trace`, and `copy` the traces output to `{PROJECT_ROOT}/lttng-traces`.
@@ -110,3 +120,9 @@ Finally, for brevity, we change the permission (since it's made by root) of the 
   ```sh
   make clean
   ```
+
+## Roadmap
+
+- [x] Docker trace
+- [x] Podman trace
+- [ ] Singularity trace
