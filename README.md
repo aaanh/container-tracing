@@ -1,4 +1,6 @@
-# Containers Trace
+# Tracing that Container
+
+<img width="250" height="250" alt="image" src="https://github.com/user-attachments/assets/060ed844-83cb-4981-8b90-e81add068ef5" />
 
 ![](https://badgen.net/badge/status/proof%20of%20concept/purple?icon=github)
 
